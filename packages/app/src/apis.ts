@@ -2,7 +2,12 @@ import {
   ScmIntegrationsApi,
   scmIntegrationsApiRef,
   ScmAuth,
+  scmAuthApiRef,
 } from '@backstage/integration-react';
+import {
+  githubPullRequestsApiRef,
+  GithubPullRequestsClient,
+} from '@roadiehq/backstage-plugin-github-pull-requests';
 import {
   AnyApiFactory,
   BackstageIdentityApi,
@@ -31,6 +36,15 @@ export const apis: AnyApiFactory[] = [
     factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
   }),
   ScmAuth.createDefaultApiFactory(),
+  createApiFactory({
+    api: githubPullRequestsApiRef,
+    deps: {
+      configApi: configApiRef,
+      scmAuthApi: scmAuthApiRef,
+    },
+    factory: ({ configApi, scmAuthApi }) =>
+      new GithubPullRequestsClient({ configApi, scmAuthApi }),
+  }),
   createApiFactory({
     api: oidcAuthApiRef,
     deps: {
