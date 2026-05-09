@@ -58,6 +58,11 @@ import {
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
 
+import {
+  GrafanaDashboardCard,
+  isGrafanaDashboardAvailable,
+} from './GrafanaDashboardCard';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -179,6 +184,18 @@ const serviceEntityPage = (
         </Grid>
         <Grid item md={6}>
           <EntityDependsOnResourcesCard />
+        </Grid>
+      </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      path="/monitoring"
+      title="Monitoring"
+      if={isGrafanaDashboardAvailable}
+    >
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <GrafanaDashboardCard />
         </Grid>
       </Grid>
     </EntityLayout.Route>

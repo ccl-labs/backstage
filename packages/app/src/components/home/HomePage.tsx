@@ -6,6 +6,7 @@ import {
 } from '@roadiehq/backstage-plugin-github-pull-requests';
 import Grid from '@material-ui/core/Grid';
 import { ArgoCDWidget } from './ArgoCDWidget';
+import { GrafanaDashboardWidget } from './GrafanaDashboardWidget';
 
 const tools = [
   { label: 'ArgoCD', url: 'https://argocd.platform.local', icon: <span>🔄</span> },
@@ -31,6 +32,9 @@ export const HomePage = () => (
         </Grid>
         <Grid item xs={12}>
           <HomePageToolkit tools={tools} />
+        </Grid>
+        <Grid item xs={12}>
+          <GrafanaDashboardWidget />
         </Grid>
       </Grid>
     </Content>
