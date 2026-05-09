@@ -1,11 +1,6 @@
 import { Content, Page } from '@backstage/core-components';
 import { HomePageToolkit } from '@backstage/plugin-home';
-import {
-  HomePageRequestedReviewsCard,
-  HomePageYourOpenPullRequestsCard,
-} from '@roadiehq/backstage-plugin-github-pull-requests';
 import Grid from '@material-ui/core/Grid';
-import { ArgoCDWidget } from './ArgoCDWidget';
 import { GrafanaDashboardWidget } from './GrafanaDashboardWidget';
 
 const tools = [
@@ -21,15 +16,6 @@ export const HomePage = () => (
   <Page themeId="home">
     <Content>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <ArgoCDWidget />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <HomePageRequestedReviewsCard />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <HomePageYourOpenPullRequestsCard />
-        </Grid>
         <Grid item xs={12}>
           <HomePageToolkit tools={tools} />
         </Grid>
